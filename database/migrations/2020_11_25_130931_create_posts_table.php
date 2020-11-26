@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title')->nullable();
             $table->string('slug')->unique();
             $table->text('content')->nullable();
-            $table->boolean('is_published');
-            $table->unsignedBigInteger('user_id');
+            $table->boolean('is_published')->default(0);
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

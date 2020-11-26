@@ -15,10 +15,10 @@ class PostController extends Controller
 {
     /**
      * List all public posts
-     * Returns a paginated instance of published posts
+     * Returns a paginated result of published posts
      * (Includes the last 5 comments and comment total for each post)
      *
-     * @return \App\Http\Resources\Posts
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function list_public()
     {
@@ -34,7 +34,7 @@ class PostController extends Controller
      * List all protected posts
      * Returns a paginated instance of protected posts
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function list_protected()
     {
@@ -47,7 +47,7 @@ class PostController extends Controller
     
     /**
      * Create a post
-     * Input keys: api_token(copy an existing token from the users table for testing), title, content, published (1 = yes, 0 = no)
+     * Input keys: api_token, title, content, published (1 = yes, 0 = no)
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +74,7 @@ class PostController extends Controller
      * Input keys: id
      *
      * @param  int  $id
-     * @return \App\Http\Resources\Posts
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function show_public($id)
     {
@@ -89,7 +89,7 @@ class PostController extends Controller
      * Display a protected post
      *
      * @param  int  $id
-     * @return \App\Http\Resources\Posts
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function show_protected($id)
     {
