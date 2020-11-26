@@ -13,7 +13,7 @@ $factory->define(Posts::class, function (Faker $faker) {
         'content' => $faker->unique()->text,
         'is_published' => $faker->boolean(60),
         'user_id' => function () {
-            return factory(App\Users::class)->create()->id;
+            return factory(App\User::class)->create()->id;
         }
     ];
 });

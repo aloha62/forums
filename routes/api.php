@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//protected routes
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('posts/private', 'Api\PostController@list_protected');
+    Route::post('posts/create', 'Api\PostController@store');
+    Route::get('posts/private/{id}', 'Api\PostController@show_protected');
+    Route::put('posts/update', 'Api\PostController@update');
+    Route::delete('posts/delete/{id}', 'Api\PostController@destroy');
 });
+
+
+Route::get('posts', 'Api\PostController@list_public');
+Route::get('posts/{id}', 'Api\PostController@show_public');
+
